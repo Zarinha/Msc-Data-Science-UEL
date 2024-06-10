@@ -33,3 +33,12 @@ plt.title('Fourier Transform')
 plt.xlabel('Frequency (Hz)')
 plt.tight_layout()
 plt.show()
+
+```
+
+This script first creates a time-domain signal $$F(t)$$ consisting of two sine waves with frequencies `a` and `b`. It then computes the Fourier Transform of this signal using the `fft` function from the `scipy.fft` module. The resulting plot shows the frequency components of the original signal, which should peak at `a` and `b`.
+
+Please replace `a`, `b`, `T`, and `dt` with your actual values. Note that the choice of `dt` (the time between samples) will affect the frequencies you can accurately measure, according to the Nyquist-Shannon sampling theorem. This theorem states that to accurately sample a signal, your sampling frequency must be at least twice the highest frequency you wish to measure. In this case, that would be `2*b`. 
+
+Remember to install necessary Python libraries by running `pip install numpy matplotlib scipy` in your terminal before running the script. 
+```
