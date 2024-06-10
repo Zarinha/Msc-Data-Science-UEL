@@ -1,0 +1,35 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.fft import fft
+
+# Constants
+a = 5  # Frequency of first sine wave
+b = 10  # Frequency of second sine wave
+T = 1  # Total time
+dt = 0.01  # Sampling interval
+
+# Time vector
+t = np.arange(0, T, dt)
+
+# Function F(t)
+F_t = np.sin(a * 2 * np.pi * t) + np.sin(b * 2 * np.pi * t)
+
+# Perform FFT
+F_f = fft(F_t)
+
+# Compute the frequency vector
+f = np.linspace(0, 1 / dt, len(t))
+
+# Plot the original signal
+plt.figure(figsize=(12, 6))
+plt.subplot(2, 1, 1)
+plt.plot(t, F_t)
+plt.title('Original Signal')
+
+# Plot the FFT
+plt.subplot(2, 1, 2)
+plt.plot(f[:len(f)//2], np.abs(F_f)[:len(f)//2] * 1 / len(f))  # Only plot the first half of frequencies
+plt.title('Fourier Transform')
+plt.xlabel('Frequency (Hz)')
+plt.tight_layout()
+plt.show()
